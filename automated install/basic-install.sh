@@ -2630,7 +2630,14 @@ main() {
             if [ -z "$0" ]; then
                 echo "NO SCRIPT"
                 echo "hack a stdin"
+            else
+                echo "WHAT IS THIS" $0
             fi
+
+            echo "CPing"
+            tempfile=$(mktemp)
+            cp /dev/stdin $tempfile
+            wc -l $tempfile
 
             exec sudo bash "$0" "$@"
             exit $?
