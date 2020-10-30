@@ -2624,6 +2624,14 @@ main() {
         if is_command sudo ; then
             printf "%b  %b Sudo utility check\\n" "${OVER}"  "${TICK}"
             # Download the install script and run it with admin rights
+            echo "HVN" "$0" "$@"
+
+            # When used as curl output
+            if [ -z "$0" ]; then
+                echo "NO SCRIPT"
+                echo "hack a stdin"
+            fi
+
             exec sudo bash "$0" "$@"
             exit $?
         # Otherwise,
